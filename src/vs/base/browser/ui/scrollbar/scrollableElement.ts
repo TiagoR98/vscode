@@ -340,6 +340,12 @@ export abstract class AbstractScrollableElement extends Widget {
 				deltaY = 0;
 			}
 
+			//fastScrolling
+			if (e.browserEvent.shiftKey) {
+				deltaX = deltaX * this._options.fastScrollSensitivity;
+				deltaY = deltaY * this._options.fastScrollSensitivity;
+			}
+
 			const futureScrollPosition = this._scrollable.getFutureScrollPosition();
 
 			let desiredScrollPosition: INewScrollPosition = {};
@@ -540,6 +546,7 @@ function resolveOptions(opts: ScrollableElementCreationOptions): ScrollableEleme
 		alwaysConsumeMouseWheel: (typeof opts.alwaysConsumeMouseWheel !== 'undefined' ? opts.alwaysConsumeMouseWheel : false),
 		scrollYToX: (typeof opts.scrollYToX !== 'undefined' ? opts.scrollYToX : false),
 		mouseWheelScrollSensitivity: (typeof opts.mouseWheelScrollSensitivity !== 'undefined' ? opts.mouseWheelScrollSensitivity : 1),
+		fastScrollSensitivity: (typeof opts.fastScrollSensitivity !== 'undefined' ? opts.fastScrollSensitivity : 10),
 		mouseWheelSmoothScroll: (typeof opts.mouseWheelSmoothScroll !== 'undefined' ? opts.mouseWheelSmoothScroll : true),
 		arrowSize: (typeof opts.arrowSize !== 'undefined' ? opts.arrowSize : 11),
 

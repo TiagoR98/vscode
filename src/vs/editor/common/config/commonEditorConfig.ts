@@ -429,6 +429,12 @@ const editorConfiguration: IConfigurationNode = {
 			'default': EDITOR_DEFAULTS.viewInfo.scrollbar.mouseWheelScrollSensitivity,
 			'markdownDescription': nls.localize('mouseWheelScrollSensitivity', "A multiplier to be used on the `deltaX` and `deltaY` of mouse wheel scroll events.")
 		},
+		'editor.fastScrollSensitivity': {
+			'type': 'number',
+			'enum': [1, 10, 20],
+			'default': EDITOR_DEFAULTS.viewInfo.scrollbar.fastScrollSensitivity,
+			'markdownDescription': nls.localize('fastScrollSensitivity', "FastScrolling multiplier speed when pressing `Shift`")
+		},
 		'editor.multiCursorModifier': {
 			'type': 'string',
 			'enum': ['ctrlCmd', 'alt'],

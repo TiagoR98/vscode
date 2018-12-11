@@ -51,6 +51,11 @@ export interface ScrollableElementCreationOptions {
 	 */
 	mouseWheelScrollSensitivity?: number;
 	/**
+	 * FastScrolling mulitplier speed when pressing `Shift`
+	 * Defaults to 10.
+	 */
+	fastScrollSensitivity?: number;
+	/**
 	 * Height for vertical arrows (top/bottom) and width for horizontal arrows (left/right).
 	 * Defaults to 11.
 	 */
@@ -118,6 +123,7 @@ export interface ScrollableElementResolvedOptions {
 	scrollYToX: boolean;
 	alwaysConsumeMouseWheel: boolean;
 	mouseWheelScrollSensitivity: number;
+	fastScrollSensitivity: number;
 	mouseWheelSmoothScroll: boolean;
 	arrowSize: number;
 	listenOnDomNode: HTMLElement | null;
