@@ -112,6 +112,7 @@ export interface ScrollableElementCreationOptions {
 export interface ScrollableElementChangeOptions {
 	handleMouseWheel?: boolean;
 	mouseWheelScrollSensitivity?: number;
+	fastScrollSensitivity: number;
 }
 
 export interface ScrollableElementResolvedOptions {

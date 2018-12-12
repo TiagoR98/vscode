@@ -1966,9 +1966,9 @@ export class EditorOptionsValidator {
 			mouseWheelScrollSensitivity = 1;
 		}
 
-		let fastScrollSensitivity = opts.fastScrollSensitivity;
+		let fastScrollSensitivity = _float(opts.fastScrollSensitivity, defaults.scrollbar.fastScrollSensitivity);
 		if (fastScrollSensitivity <= 0) {
-			mouseWheelScrollSensitivity = defaults.scrollbar.fastScrollSensitivity;
+			fastScrollSensitivity = 5;
 		}
 		const scrollbar = this._sanitizeScrollbarOpts(opts.scrollbar, defaults.scrollbar, mouseWheelScrollSensitivity, fastScrollSensitivity);
 		const minimap = this._sanitizeMinimapOpts(opts.minimap, defaults.minimap);
@@ -2597,7 +2597,7 @@ export const EDITOR_DEFAULTS: IValidatedEditorOptions = {
 			verticalSliderSize: 14,
 			handleMouseWheel: true,
 			mouseWheelScrollSensitivity: 1,
-			fastScrollSensitivity: 10,
+			fastScrollSensitivity: 5,
 		},
 		minimap: {
 			enabled: true,
