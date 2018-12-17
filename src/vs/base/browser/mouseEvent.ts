@@ -131,14 +131,14 @@ interface IGeckoMouseWheelEvent {
 
 export class StandardWheelEvent {
 
-	public readonly browserEvent: IMouseWheelEvent | undefined;
+	public readonly browserEvent: IMouseWheelEvent | null;
 	public readonly deltaY: number;
 	public readonly deltaX: number;
 	public readonly target: Node;
 
-	constructor(e: IMouseWheelEvent | undefined, deltaX: number = 0, deltaY: number = 0) {
+	constructor(e: IMouseWheelEvent | null, deltaX: number = 0, deltaY: number = 0) {
 
-		this.browserEvent = e || undefined;
+		this.browserEvent = e || null;
 		this.target = e ? (e.target || (<any>e).targetNode || e.srcElement) : null;
 
 		this.deltaY = deltaY;
