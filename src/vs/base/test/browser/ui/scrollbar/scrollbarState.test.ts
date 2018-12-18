@@ -5,6 +5,13 @@
 
 import * as assert from 'assert';
 import { ScrollbarState } from 'vs/base/browser/ui/scrollbar/scrollbarState';
+//import { INewScrollPosition, Scrollable, ScrollbarVisibility } from 'vs/base/common/scrollable';
+//import { VerticalScrollbar } from 'vs/base/browser/ui/scrollbar/verticalScrollbar';
+//import { ScrollableElementResolvedOptions } from 'vs/base/browser/ui/scrollbar/scrollableElementOptions';
+//import { AbstractScrollbar, ISimplifiedMouseEvent, ScrollbarHost } from 'vs/base/browser/ui/scrollbar/abstractScrollbar';
+import { ScrollableElement } from 'vs/base/browser/ui/scrollbar/scrollableElement';
+import { DefaultOptions } from 'vs/base/browser/ui/list/listView';
+import { getOrDefault } from 'vs/base/common/objects';
 
 suite('ScrollbarState', () => {
 	test('inflates slider size', () => {
@@ -31,6 +38,24 @@ suite('ScrollbarState', () => {
 		assert.equal(actual.isNeeded(), true);
 		assert.equal(actual.getSliderSize(), 20);
 		assert.equal(actual.getSliderPosition(), 249);
+	});
+
+	test('fast scrolling test', () => {
+		//let actual = new ScrollbarState(0, 14, 0);
+
+		const domNode = document.createElement('div');
+
+		let scrollable = new ScrollableElement(domNode, {
+			alwaysConsumeMouseWheel: true,
+			vertical: getOrDefault(DefaultOptions, o => o.verticalScrollMode, DefaultOptions.verticalScrollMode),
+			lazyRender: true,
+		});
+
+		scrollable.setScrollPosition({ scrollLeft: 10, scrollTop: 0 });
+
+		scrollable.simulateMouseScroll(3, 0);
+		scrollable.renderNow();
+		assert.equal(scrollable.getScrollPosition(), 0);
 	});
 
 	test('inflates slider size with arrows', () => {

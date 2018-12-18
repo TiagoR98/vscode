@@ -316,6 +316,14 @@ export abstract class AbstractScrollableElement extends Widget {
 		}
 	}
 
+
+	public simulateMouseScroll(deltaX: number, deltaY: number): void {
+		var evt = <IMouseWheelEvent>{ wheelDelta: 30 };
+
+		let e = new StandardWheelEvent(evt, deltaX, deltaY);
+		this._onMouseWheel(e);
+	}
+
 	private _onMouseWheel(e: StandardWheelEvent): void {
 
 		const classifier = MouseWheelClassifier.INSTANCE;
